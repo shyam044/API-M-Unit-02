@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>API&M Unit-02</title>
+    <style>
+        * { box-sizing: border-box; }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: #f9f9f9;
+            color: #333;
+            font-size: 1rem;
+        }
+        header {
+            background-color: #0077cc;
+            color: white;
+            padding: 1rem 0.5rem;
+            text-align: center;
+            font-size: 1.5rem;
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+        .container {
+            max-width: 900px;
+            margin: 1.2rem auto;
+            padding: 1rem;
+            background: white;
+            box-shadow: 0 0 8px rgba(0,0,0,0.06);
+        }
+        h2 {
+            color: #0077cc;
+            margin: 1.2rem 0 0.8rem;
+            font-size: 1.25rem;
+        }
+        ul {
+            margin: 0.4rem 0 0.7rem 0.7rem;
+            padding-left: 0.7rem;
+        }
+        ul ul {
+            margin-left: 0.7rem;
+            padding-left: 0.7rem;
+        }
+        li > ul {
+            margin-top: 0.2rem;
+            margin-bottom: 0.3rem;
+        }
+        strong { font-weight: 600; }
+        .code-label {
+            background: #e0e0e0;
+            padding: 4px 10px;
+            display: inline-block;
+            font-weight: bold;
+            color: #000;
+            border-radius: 6px 6px 0 0;
+            margin-left: 1rem;
+            font-size: 0.95rem;
+        }
+        pre {
+            background: #f4f4f4;
+            padding: 10px;
+            border-radius: 0 6px 6px 6px;
+            overflow-x: auto;
+            margin: -6px 0 0.6rem 1rem;
+            font-size: 0.95rem;
+            border: 1px solid #ddd;
+        }
+        .output {
+            margin: 0 0 0 1.2rem;
+            padding: 0.45rem 0.8rem;
+            font-size: 1rem;
+            background: #f8f8fa;
+            border-radius: 4px;
+            border-left: 3px solid #50aaff;
+        }
+        @media (max-width: 768px) {
+            .container { padding: 0.7rem; }
+            h2 { font-size: 1.13rem; margin-top: 1rem;}
+            .code-label, pre { margin-left: 0.5rem; font-size: 0.87rem; }
+            .output { margin-left: 0.6rem; font-size: 0.96rem; padding: 0.36rem 0.6rem;}
+        }
+        @media (max-width: 480px) {
+            ul, ul ul { margin-left: 0.46rem !important; padding-left: 0.5rem !important;}
+        }
+    </style>
+</head>
+<body>
+    <header>API&M Unit-02</header>
+    <div class="container">
+        <h2>1) Create a Spring Boot Application</h2>
+        <ul>
+            <li>steps:
+                <ul>
+                    <li>Install IDE:
+                        <ul>
+                            <li>Install Eclipse IDE, STS for Java development</li>
+                        </ul>
+                    </li>
+                    <li>Create Project:
+                        <ul>
+                            <li>Enter details in Spring.io and click generate to download the project Zip</li>
+                        </ul>
+                    </li>
+                    <li>Extract and import:
+                        <ul>
+                            <li>Extract the project Zip and import it into the IDE</li>
+                        </ul>
+                    </li>
+                    <li>Download Dependencies:
+                        <ul>
+                            <li>IDE automatically download the required dependencies</li>
+                        </ul>
+                    </li>
+                    <li>Run the Applications:
+                        <ul>
+                            <li>Main class annotated with <strong>@SpringBootApplication</strong> and run it as a Java Application</li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+
+    <header>API&M Unit-02</header>
+    <div class="container">
+        <h2>2) REST controller:</h2>
+        <ul>
+            <li>REST Controller is the main component in a Spring Boot RESTful service.</li>
+            <li>It is defined using the <strong>@RestController</strong> annotation.</li>
+            <li>Key Annotations:
+                <ul>
+                    <li><strong>@RestController</strong></li>
+                    <li><strong>@RequestMapping</strong></li>
+                    <li><strong>@GetMapping</strong>, <strong>@PostMapping</strong>, <strong>@PutMapping</strong>, <strong>@DeleteMapping</strong></li>
+                    <li><strong>@RequestBody</strong>, <strong>@PathVariable</strong>, <strong>@RequestParam</strong></li>
+                </ul>
+            </li>
+            <li>Syntax:
+<pre>@RestController
+@RequestMapping("/request")
+public class A
+{
+   ...
+   @GetMapping("/get")
+   ...
+   @PostMapping("/post")
+   ...
+   @PutMapping("/put")
+   ...
+   @DeleteMapping("/delete")
+   ...
+}</pre>
+            </li>
+            <li><strong>@GetMapping</strong> handles GET requests.</li>
+            <li><strong>@PostMapping</strong> handles POST requests.</li>
+            <li><strong>@PutMapping</strong> handles PUT requests.</li>
+            <li><strong>@DeleteMapping</strong> handles DELETE requests.</li>
+            <li>Program</li>
+            <div class="code-label">A.java</div>
+<pre>@RestController
+@RequestMapping("/request")
+public class A {
+  @GetMapping("/get")
+  public String fun1() {
+     return "CC";
+  }
+  @PostMapping("/post")
+  public String fun2() {
+     return "WNS";
+  }
+  @PutMapping("/put")
+  public String fun3() {
+     return "API&M";
+  }
+  @DeleteMapping("/delete")
+  public String fun4() {
+     return "SCT";
+  }
+}</pre>
+            <div class="code-label">Main.java</div>
+<pre>//import modules
+@SpringBootApplication
+public class Main {
+  public static void main(String[] args) {
+     SpringApplication.run(Main.class, args);
+  }
+}</pre>
+            <li>Output:</li>
+            <div class="output">CC</div>
+            <div class="output">WNS</div>
+            <div class="output">API&M</div>
+            <div class="output">SCT</div>
+        </ul>
+    </div>
+
+    <header>API&M Unit-02</header>
+    <div class="container">
+        <h2>3) Build a Spring Boot Application with Exception Handling and apply aspects to controller methods</h2>
+        <ul>
+            <div class="code-label">A.java</div>
+<pre>@RestController
+@RequestMapping("/request")
+public class A {
+  @GetMapping("/get")
+  public String fun1() {
+      if(true)
+          throw new RuntimeException("Error");
+      return "CC";
+  }
+  @PostMapping("/post")
+  public String fun2() {
+      if(true)
+          throw new RuntimeException("Error");
+      return "WNS";
+  }
+  @PutMapping("/put")
+  public String fun3() {
+      if(true)
+          throw new RuntimeException("Error");
+      return "API&M";
+  }
+  @DeleteMapping("/delete")
+  public String fun4() {
+      if(true)
+          throw new RuntimeException("Error");
+      return "SCT";
+  }
+}</pre>
+            <div class="code-label">B.java</div>
+<pre>@Aspect
+@Component
+public class B {
+   @AfterThrowing(...)
+   public void fun(Exception e){
+      System.out.println(e.getMessage());
+   }
+}</pre>
+            <div class="code-label">Main.java</div>
+<pre>//import modules
+@SpringBootApplication
+public class Main {
+   public static void main(String[] args) {
+      SpringApplication.run(Main.class, args);
+   }
+}</pre>
+            <li>Output:</li>
+            <div class="output">Error</div>
+            <div class="output">Error</div>
+            <div class="output">Error</div>
+            <div class="output">Error</div>
+        </ul>
+    </div>
+
+    <header>API&M Unit-02</header>
+    <div class="container">
+        <h2>4) Autowiring in Spring</h2>
+        <ul>
+            <li>The process of automatically injecting dependencies between beans is called as <strong>Autowiring</strong></li>
+            <li>It eliminates the manual wiring in XML</li>
+            <li>Modes of Autowiring:
+                <ul>
+                    <li><strong>NO</strong>:
+                        <ul>
+                            <li>There is no automatic connection</li>
+                            <li>Dependencies are defined by the developer</li>
+                            <li>Developers manually define dependencies in bean configuration</li>
+                            <li>syntax:
+<pre>&lt;bean id="a" class="b" /&gt;</pre>
+                            </li>
+                        </ul>
+                    </li>
+                    <li><strong>byName</strong>:
+                        <ul>
+                            <li>It connects by name</li>
+                            <li>Dependencies are defined by the Spring</li>
+                            <li>Dependencies are injected when the property name = bean id</li>
+                            <li>syntax:
+<pre>&lt;bean id="a" class="b" autowire="byName" /&gt;</pre>
+                            </li>
+                        </ul>
+                    </li>
+                    <li><strong>byType</strong>:
+                        <ul>
+                            <li>It connects by type</li>
+                            <li>Dependencies are defined by the Spring</li>
+                            <li>Dependencies are injected when a bean has a unique type</li>
+                            <li>syntax:
+<pre>&lt;bean id="a" class="b" autowire="byType" /&gt;</pre>
+                            </li>
+                        </ul>
+                    </li>
+                    <li><strong>constructor</strong>:
+                        <ul>
+                            <li>It connects through the constructor</li>
+                            <li>Dependencies are defined by the Spring</li>
+                            <li>It is like byType but applies to constructor arguments</li>
+                            <li>syntax:
+<pre>&lt;bean id="a" class="b" autowire="constructor" /&gt;</pre>
+                            </li>
+                        </ul>
+                    </li>
+                    <li><strong>autodetect</strong>:
+                        <ul>
+                            <li>It connects automatically, but the older version</li>
+                            <li>Dependencies are defined by the Spring</li>
+                            <li>It is between byType and Constructor</li>
+                            <li>syntax:
+<pre>&lt;bean id="a" class="b" autowire="autodetect" /&gt;</pre>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+
+    <header>API&M Unit-02</header>
+    <div class="container">
+        <h2>5) Singleton Scope vs Prototype Scope</h2>
+        <ul>
+            <li><strong>Singleton Scope</strong>:
+                <ul>
+                    <li>Singleton Scope is the default Scope of a bean</li>
+                    <li>You don't have to declare the scope of a bean as a singleton explicitly</li>
+                    <li>Only one instance is created for a single bean definition</li>
+                    <li>same Object is shared for each request</li>
+                    <li>It is used for a stateless bean</li>
+                    <li>Syntax:
+<pre>@Service
+public class A
+{
+  ...
+}</pre>
+                    </li>
+                </ul>
+            </li>
+            <li><strong>Prototype Scope</strong>:
+                <ul>
+                    <li>Prototype Scope is not the default Scope of a bean</li>
+                    <li>You have to declare the scope of a bean as a Prototype explicitly</li>
+                    <li>A new instance is created for a single bean definition</li>
+                    <li>new Object is created for each request</li>
+                    <li>It is used for a stateful bean</li>
+                    <li>syntax:
+<pre>@Component
+@Scope("prototype")
+public class A
+{
+    ...
+}</pre>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+
+    <header>API&M Unit-02</header>
+    <div class="container">
+        <h2>6) Request scope and Session Scope</h2>
+        <ul>
+            <li><strong>Request scope</strong>:
+                <ul>
+                    <li>It is created for each request</li>
+                    <li>It lives for a short time</li>
+                    <li>Valid only for one HTTP call</li>
+                    <li>Request Scope is defined with <strong>@Scope("request")</strong> annotation</li>
+                    <li>It creates a new Request Data bean</li>
+                    <li>Syntax:
+<pre>@Component
+@Scope("request")
+public class A
+{
+   ...
+}</pre>
+                    </li>
+                </ul>
+            </li>
+            <li><strong>Session Scope</strong>:
+                <ul>
+                    <li>It is created for each Session</li>
+                    <li>It lives for a very long time</li>
+                    <li>valid for many HTTP Calls</li>
+                    <li>Session Scope is defined with <strong>@Scope("session")</strong> annotation</li>
+                    <li>It creates a new session bean</li>
+                    <li>Syntax:
+<pre>@Component
+@Scope("session")
+public class A
+{
+   ...
+}</pre>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+
+    <header>API&M Unit-02</header>
+    <div class="container">
+        <h2>7) Logging in a Spring Boot Application:</h2>
+        <ul>
+            <li>Logging is the essential feature in a Spring Boot Application</li>
+            <li>Logging records the important events, errors and debugging information</li>
+            <li>syntax:
+<pre>@RestController
+@RequestMapping("/request")
+public class A
+{
+  // Create a Logger instance
+  public Logger a= ...;
+  ...
+}</pre>
+            </li>
+            <li>Program:</li>
+            <div class="code-label">A.java</div>
+<pre>//import modules
+@RestController
+@RequestMapping("/request")
+public class A
+{
+  // Create a Logger instance
+  public Logger a= ...;
+  @GetMapping("/get")
+  public void logExample()
+  {
+    a.info("A");
+    a.warn("B");
+    a.error("C");
+  }
+  @PostMapping("/post")
+  public void logExample()
+  {
+    a.info("D");
+    a.warn("E");
+    a.error("F");
+  }
+  @PutMapping("/put")
+  public void logExample()
+  {
+    a.info("G");
+    a.warn("H");
+    a.error("I");
+  }
+  @DeleteMapping("/delete")
+  public void logExample()
+  {
+    a.info("J");
+    a.warn("K");
+    a.error("L");
+  }
+}</pre>
+            <div class="code-label">Main.java</div>
+<pre>//import modules
+@SpringBootApplication
+public class Main {
+  public static void main(String[] args) {
+     SpringApplication.run(Main.class, args);
+  }
+}</pre>
+            <li>Output:</li>
+            <div class="output">/request/get</div>
+            <div class="output">INFO A</div>
+            <div class="output">WARN B</div>
+            <div class="output">ERROR C</div>
+            <div class="output">/request/post</div>
+            <div class="output">INFO D</div>
+            <div class="output">WARN E</div>
+            <div class="output">ERROR F</div>
+            <div class="output">/request/put</div>
+            <div class="output">INFO G</div>
+            <div class="output">WARN H</div>
+            <div class="output">ERROR I</div>
+            <div class="output">/request/delete</div>
+            <div class="output">INFO J</div>
+            <div class="output">WARN K</div>
+            <div class="output">ERROR L</div>
+        </ul>
+    </div>
+
+    <header>API&M Unit-02</header>
+    <div class="container">
+        <h2>8) Aspect-Oriented Programming(AOP):</h2>
+        <ul>
+            <li><strong>AOP</strong> stands for Aspect-Oriented Programming</li>
+            <li>AOP is used to remove the cross-cutting concerns from the main logic</li>
+            <li>In spring, an Advisor connects two things:
+                <ul>
+                    <li><strong>Pointcut</strong> (where to do, key: <strong>@Pointcut</strong>, <strong>@Aspect</strong>)
+                        <ul>
+                            <li>@Pointcut("expression") defines the join points</li>
+                            <li>@Aspect creates Advisors</li>
+                        </ul>
+                    </li>
+                    <li><strong>Advice</strong> (what to do, key: <strong>@Before</strong>, <strong>@After</strong>, <strong>@AfterReturning</strong>, <strong>@AfterThrowing</strong>, <strong>@Around</strong>)
+                        <ul>
+                            <li>@Before runs before</li>
+                            <li>@After runs after</li>
+                            <li>@AfterReturning: if method returns</li>
+                            <li>@AfterThrowing: if method throws exception</li>
+                            <li>@Around: change value/handle Exception</li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+            <div class="code-label">A.java</div>
+<pre>//import modules
+@Aspect
+@Component
+Public class A
+{
+  @pointcut("expression")
+  public void fun() {}
+  @Before("fun()")
+  public void fun1() {
+    System.out.println("A");
+  }
+  @After("fun()")
+  public void fun2() {
+     System.out.println("B");
+  }
+  @AfterReturning(pointcut = "fun()", returning = "a")
+  public void fun3(Object a) {
+     System.out.println(a);
+  }
+  @AfterThrowing(pointcut = "fun()", throwing = "b")
+  public void fun4(Exception b) {
+     System.out.println(b.getMessage());
+  }
+  // AROUND
+  @Around("fun()")
+  public void fun5() {
+     System.out.println("C");
+  }
+}</pre>
+            <div class="code-label">Main.java</div>
+<pre>//import modules
+@SpringBootApplication
+public class Main {
+  public static void main(String[] args) {
+     SpringApplication.run(Main.class, args);
+  }
+}</pre>
+            <li>Output:</li>
+            <div class="output">A</div>
+            <div class="output">B</div>
+            <div class="output">//returns value</div>
+            <div class="output">//Error message</div>
+            <div class="output">C</div>
+        </ul>
+    </div>
+
+    <header>API&M Unit-02</header>
+    <div class="container">
+        <h2>9) Cross-Cutting Concerns:</h2>
+        <ul>
+            <li>Some features are used in many modules, and those features are not part of the main logic</li>
+            <li>These are called as cross-cutting concerns.</li>
+            <li>Example:
+                <ul>
+                    <li>Logging</li>
+                    <li>Auditing</li>
+                    <li>Exception Handling</li>
+                    <li>Security</li>
+                </ul>
+            </li>
+            <li>Role of AOP:
+                <ul>
+                    <li>AOP stands for Aspect-Oriented Programming</li>
+                    <li>AOP is used to remove the cross-cutting concerns from the main logic</li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+</body>
+</html>
