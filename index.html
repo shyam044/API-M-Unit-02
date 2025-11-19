@@ -84,6 +84,90 @@
         @media (max-width: 480px) {
             ul, ul ul { margin-left: 0.46rem !important; padding-left: 0.5rem !important;}
         }
+        
+        /* Image Lightbox */
+        img {
+            display: block;
+            max-width: 58%;
+            height: auto;
+            max-height: 270px;
+            object-fit: contain;
+            margin: 1rem auto;
+            border-radius: 6px;
+            cursor: zoom-in;
+            transition: transform 0.2s ease;
+            border: 1px solid #ddd;
+        }
+
+        img:hover {
+            transform: scale(1.04);
+        }
+
+        #lightbox {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: rgba(0,0,0,0.85);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease;
+            z-index: 1000;
+            backdrop-filter: blur(6px);
+        }
+
+        #lightbox.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        #lightbox img {
+            max-width: 88%;
+            max-height: 88%;
+            border-radius: 10px;
+            box-shadow: 0 0 25px rgba(255,255,255,0.3);
+            transform: scale(0.85);
+            transition: transform 0.3s ease;
+            cursor: zoom-out;
+        }
+
+        #lightbox.active img {
+            transform: scale(1);
+        }
+
+        /* Tip */
+        #image-tip {
+            position: fixed;
+            top: 16px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(0, 119, 204, 0.96);
+            color: #fff;
+            padding: 0.7rem 1.1rem;
+            border-radius: 6px;
+            font-size: 0.92rem;
+            font-weight: 500;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+            z-index: 2000;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.5s ease;
+            white-space: nowrap;
+        }
+
+        #image-tip.show {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        @media (max-width: 480px) {
+            #image-tip {
+                font-size: 0.85rem;
+                padding: 0.6rem 1rem;
+            }
+        }
     </style>
 </head>
 <body>
@@ -96,6 +180,7 @@
                     <li>Install IDE:
                         <ul>
                             <li>Install Eclipse IDE, STS for Java development</li>
+                            <img src="WhatsApp Image 2025-11-19 at 18.10.51_7061d779.jpg"/>
                         </ul>
                     </li>
                     <li>Create Project:
@@ -106,6 +191,8 @@
                     <li>Extract and import:
                         <ul>
                             <li>Extract the project Zip and import it into the IDE</li>
+                            <img src="WhatsApp Image 2025-11-19 at 18.11.17_f8f1b471.jpg"/>
+                            <img src="WhatsApp Image 2025-11-19 at 18.11.40_b9325f60.jpg"/>
                         </ul>
                     </li>
                     <li>Download Dependencies:
@@ -555,6 +642,7 @@ public class Main {
     <div class="container">
         <h2>9) Cross-Cutting Concerns:</h2>
         <ul>
+            <img src="0xO3n.jpg"/>
             <li>Some features are used in many modules, and those features are not part of the main logic</li>
             <li>These are called as cross-cutting concerns.</li>
             <li>Example:
@@ -573,5 +661,31 @@ public class Main {
             </li>
         </ul>
     </div>
+    
+    <div id="lightbox">
+        <img id="lightbox-img" src="" alt="Enlarged view">
+    </div>
+
+    <script>
+        const lightbox = document.getElementById("lightbox");
+        const lightboxImg = document.getElementById("lightbox-img");
+
+        document.querySelectorAll("img").forEach(img => {
+            img.addEventListener("click", () => {
+                lightboxImg.src = img.src;
+                lightbox.classList.add("active");
+            });
+        });
+
+        lightbox.addEventListener("click", () => {
+            lightbox.classList.remove("active");
+        });
+
+        window.addEventListener("DOMContentLoaded", () => {
+            const tip = document.getElementById("image-tip");
+            tip.classList.add("show");
+            setTimeout(() => tip.classList.remove("show"), 5000);
+        });
+    </script>
 </body>
 </html>
