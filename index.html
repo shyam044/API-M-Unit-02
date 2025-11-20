@@ -258,19 +258,19 @@ public class A
 @RequestMapping("/request")
 public class A {
   @GetMapping("/get")
-  public String fun1() {
+  public String get() {
      return "CC";
   }
   @PostMapping("/post")
-  public String fun2() {
+  public String post() {
      return "WNS";
   }
   @PutMapping("/put")
-  public String fun3() {
+  public String put() {
      return "API&M";
   }
   @DeleteMapping("/delete")
-  public String fun4() {
+  public String delete() {
      return "SCT";
   }
 }</pre>
@@ -299,25 +299,25 @@ public class Main {
 @RequestMapping("/request")
 public class A {
   @GetMapping("/get")
-  public String fun1() {
+  public String get() {
       if(true)
           throw new RuntimeException("Error");
       return "CC";
   }
   @PostMapping("/post")
-  public String fun2() {
+  public String post() {
       if(true)
           throw new RuntimeException("Error");
       return "WNS";
   }
   @PutMapping("/put")
-  public String fun3() {
+  public String put() {
       if(true)
           throw new RuntimeException("Error");
       return "API&M";
   }
   @DeleteMapping("/delete")
-  public String fun4() {
+  public String delete() {
       if(true)
           throw new RuntimeException("Error");
       return "SCT";
@@ -555,19 +555,15 @@ public class Main {
   }
 }</pre>
             <li>Output:</li>
-            <div class="output">/request/get</div>
             <div class="output">INFO A</div>
             <div class="output">WARN B</div>
             <div class="output">ERROR C</div>
-            <div class="output">/request/post</div>
             <div class="output">INFO D</div>
             <div class="output">WARN E</div>
             <div class="output">ERROR F</div>
-            <div class="output">/request/put</div>
             <div class="output">INFO G</div>
             <div class="output">WARN H</div>
             <div class="output">ERROR I</div>
-            <div class="output">/request/delete</div>
             <div class="output">INFO J</div>
             <div class="output">WARN K</div>
             <div class="output">ERROR L</div>
@@ -697,5 +693,6 @@ public class Main {
     </script>
 </body>
 </html>
+
 
 
